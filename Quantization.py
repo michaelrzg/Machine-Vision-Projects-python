@@ -1,6 +1,6 @@
 # Michael Rizig
 # Project 1: Digital Image Processing
-# File 1: Quantization
+# File 2: Quantization
 # 6/6/2024
 
 # imports
@@ -22,7 +22,8 @@ def filter(bits, x):
     # by multiplying it by the original value, we lose any deviation from a even multiple, giving us n=bits possible outputs, properly scaled
     # example: x=126; bits=4 
     # val = 256/16 = 16
-    # this means we only have 17 possible values for greyscale, those being : 0,16,32,48,64,80,96,112,128,144 etc
+    # this means we only have 16 possible values for greyscale, those being : 0,16,32,48,64,80,96,112,128,144 etc
+    # because of this fact, we are mimicing an n-bit greyscale by only displaying 2**n grey levels
     # 126 / 16 = 7.875; convering to int, 7.875 = 7
     # finally multiplying by 16 gives us 112.
     return val * int(x*(1/val))
