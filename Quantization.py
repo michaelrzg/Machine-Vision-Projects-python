@@ -6,11 +6,11 @@ def filter(bits, x):
         if x>127:
             return 255
         return 0
-    val = 256 / bits
-    return val * int(x/val)
+    val = 256 / 2**bits
+    return val * int(x*(1/val))
     
 
-path = 'apple.jpeg'
+path = 'example.jpg'
 image = io.imread(path)
 image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 out = image.copy()
@@ -24,4 +24,5 @@ for divisor in range (7,0,-1):
             out[k][j] = [v,v,v]
     plottool.imshow(out)
     plottool.show()
+    cv2.imwrite(f'greyscale{divisor}-bits.jpeg',out)
     out = image.copy()
