@@ -52,6 +52,7 @@ for k in range (0,3):
             for pixel in range(0,3):
                 #update each channel to fit given number of colors for each (divisor/3 since we have 3 colors)
                 out[i][j][pixel] = filter(divisor[k]/3,baseImage[i][j][pixel])
+    print('Image color levels from ',divisor[k]*2, " to " , divisor[k])
     #plot image
     plottool.imshow(out)
     #display image
