@@ -13,7 +13,7 @@ import cv2
 imagePath = 'input/cat.jpg'
 alqita = io.imread(imagePath)
 
-#image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+image = cv2.cvtColor(alqita, cv2.COLOR_BGR2RGB)
 #obtain shape of image matrix:
 shape = alqita.shape
 
