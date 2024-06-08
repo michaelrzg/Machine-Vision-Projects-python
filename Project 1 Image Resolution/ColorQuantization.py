@@ -1,5 +1,6 @@
 # Michael Rizig
 # Project 1: Digital Image Processing
+# 001008703
 # File 3: Color Quantization
 # 6/8/2024
 
