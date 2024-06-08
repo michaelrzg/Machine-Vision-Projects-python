@@ -57,6 +57,8 @@ for k in range (0,3):
     plottool.imshow(out)
     #display image
     plottool.show()
+    #convert colors
+    out = cv2.cvtColor(out, cv2.COLOR_BGR2RGB)
     #save image with appropriate name
     cv2.imwrite(f'output/color/downcolor{divisor[k]}bits-{k}.jpg',out)
     # restore output image to original quality for next itteration
