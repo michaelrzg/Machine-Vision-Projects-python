@@ -10,7 +10,7 @@ import numpy as np
 import cv2
 
 #read in image:
-imagePath = 'cat.jpg'
+imagePath = 'input/cat.jpg'
 alqita = io.imread(imagePath)
 
 #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -45,7 +45,7 @@ for k in range(5):
     #show result of current downscale:
     plottool.imshow(output)
     plottool.show()     
-    cv2.imwrite(f'downscale-{k+1}.jpg',output)
+    cv2.imwrite(f'output/sampling/downscale-{k+1}.jpg',output)
     #increaes downscale:
     factor=factor*2
     #reset output image:
@@ -75,7 +75,7 @@ for k in range(5):
     #show result of current upscale:
     plottool.imshow(output)
     plottool.show()     
-    cv2.imwrite(f'upscale-{k+1}.jpg',output)
+    cv2.imwrite(f'output/sampling/upscale-{k+1}.jpg',output)
     #increaes upscale:
     factor=factor*2
     #reset output image:

@@ -27,7 +27,7 @@ def filter(bits, x):
     return val * int(x*(1/val))
 
 #grab inital image same way as files 1 and 2
-path = 'cat.jpg'
+path = 'input/cat.jpg'
 baseImage = io.imread(path)
 
 #show initial image
@@ -57,6 +57,6 @@ for k in range (0,3):
     #display image
     plottool.show()
     #save image with appropriate name
-    cv2.imwrite(f'downcolor{divisor[k]}bits-{k}.jpg',out)
+    cv2.imwrite(f'output/color/downcolor{divisor[k]}bits-{k}.jpg',out)
     # restore output image to original quality for next itteration
     out=baseImage.copy()

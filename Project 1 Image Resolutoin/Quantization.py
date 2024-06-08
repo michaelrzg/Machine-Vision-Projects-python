@@ -29,7 +29,7 @@ def filter(bits, x):
     return val * int(x*(1/val))
     
 # define path for image
-path = 'apple.jpeg'
+path = 'input/apple.jpeg'
 # read in image into memory
 image = io.imread(path)
 # convert image from brg to rgb
@@ -51,6 +51,6 @@ for divisor in range (7,0,-1):
     plottool.imshow(out)
     plottool.show()
     # save current image with unique name
-    cv2.imwrite(f'greyscale{divisor}-bits.jpeg',out)
+    cv2.imwrite(f'output/grey/greyscale{divisor}-bits.jpeg',out)
     # reset out image to original for next pass
     out = image.copy()
