@@ -33,7 +33,7 @@ for i in filter_size:
     for k in range (padding,noisyAtrium.shape[0]-padding):
         for j in range(padding,noisyAtrium.shape[1]-padding):
             V = averageFilter(k,j,i)
-            out[k][j] = [V,V,V]
+            out[k][j] = V
     print("after")
     cv2.imwrite(f'output/reduction/average/filtersize-{i}.png',out)
     plottool.imshow(out)
