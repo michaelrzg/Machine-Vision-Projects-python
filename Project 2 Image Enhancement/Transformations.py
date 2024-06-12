@@ -12,10 +12,9 @@ uniPath = 'input/university.png'
 image = io.imread(uniPath)
 image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 out = image.copy()
-
 plottool.imshow(image)
 plottool.show()
-# log transformation with varying gamma:
+# log transformation with varying constant factors:
 constant = [30,50,70,90,120,150]
 for k in range(6):
     for i in range(image.shape[0]):
@@ -43,3 +42,4 @@ for l in range(3):
         cv2.imwrite(f'output/power/gamma-{gamma[l]}/yValue-{yValue[k]}.png',out)
         out=image.copy()
 plottool.imshow(out)
+
