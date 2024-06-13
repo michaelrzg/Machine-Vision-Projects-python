@@ -100,7 +100,6 @@ for i in filter_size:
     for k in range (padding,noisyAtrium.shape[0]-padding):
         for j in range(padding,noisyAtrium.shape[1]-padding):
             out[k][j] = medianFilter(k,j,i)
-    
     #save and display        
     cv2.imwrite(f'output/reduction/median/filtersize-{i}.png',out)
     plottool.imshow(out)
