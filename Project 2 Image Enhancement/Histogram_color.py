@@ -1,3 +1,8 @@
+# Michael Rizig
+# Project 2: Image Enhancement
+# 001008703
+# File 2: Histogram Equalization
+# 6/12/2024
 
 
 import cv2
