@@ -1,7 +1,7 @@
 # Michael Rizig
 # Project 2: Image Enhancement
 # 001008703
-# File 3: Noise Reduction via Average Filtering & Median Filtering
+# File 4: Noise Reduction via Average Filtering & Median Filtering
 # 6/12/2024
 
 # import nessesary libs
