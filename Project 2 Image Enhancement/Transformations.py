@@ -27,7 +27,7 @@ plottool.imshow(image)
 plottool.show()
 
 # log transformation with varying constant factors:
-constant = [30,50,70,90,120,150]
+constant = [20,30,50,70,90,110]
 #outer loop goes through each log constant
 for k in range(6):
     
