@@ -33,10 +33,10 @@ satImage = io.imread(satpath)
 #print(satImage[0][0])
 
 #define out output image
+
+
+satImage = cv2.cvtColor(satImage,cv2.COLOR_BGR2RGB)
 out = satImage.copy()
-
-#satImage = cv2.cvtColor(satImage,cv2.)
-
 #sshow our input image before processing
 plottool.imshow(satImage)
 plottool.show()
@@ -56,6 +56,8 @@ for k in range(0,satImage.shape[0]):
 #show output image after our B channel correction
 plottool.imshow(out)
 plottool.show()
+out = cv2.cvtColor(out,cv2.COLOR_BGR2RGB)
+
 cv2.imwrite('output/hist/satmap/B-Corrected.png',out)
 #show equalized historgram for B channel after processing
 hist = cv2.calcHist([out], [0], None, maxsize, colorrange)
@@ -75,6 +77,7 @@ for k in range(0,satImage.shape[0]):
 #show output image after G channel histogram equalization
 plottool.imshow(out)
 plottool.show()
+out = cv2.cvtColor(out,cv2.COLOR_BGR2RGB)
 cv2.imwrite('output/hist/satmap/G-Corrected.png',out)
 
 # show equalized histogram for g values
@@ -95,6 +98,8 @@ for k in range(0,satImage.shape[0]):
 #show resulting image
 plottool.imshow(out)
 plottool.show()
+out = cv2.cvtColor(out,cv2.COLOR_BGR2RGB)
+
 cv2.imwrite('output/hist/satmap/R-Corrected.png',out)
 
 
