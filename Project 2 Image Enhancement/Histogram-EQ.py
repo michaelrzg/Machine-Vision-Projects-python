@@ -39,10 +39,12 @@ out= university.copy()
 
 #display original image
 plottool.imshow(out)
+plottool.title("Original image:")
 plottool.show()
 
 #display original image's histogram distrobution
 plottool.plot(hist)
+plottool.title("Original image Histogram:")
 plottool.show()
 
 #print(out.shape)
@@ -58,10 +60,12 @@ hist = cv2.calcHist([out], [0], None, maxsize, greyrange)
 
 #display histrogram
 plottool.plot(hist)
+plottool.title("Equalized Histogram:")
 plottool.show()
 
 #display corrected image
 plottool.imshow(out)
+plottool.title("Equalized Image:")
 plottool.show()
 
 #save image
