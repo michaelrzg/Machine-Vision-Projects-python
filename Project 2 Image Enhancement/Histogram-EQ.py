@@ -47,6 +47,7 @@ plottool.plot(hist)
 plottool.title("Original image Histogram:")
 plottool.show()
 
+
 #print(out.shape)
 #loop through the input image and apply the equalizaton function to each pixel's grey value, saving the value in the output image
 for k in range(0,university.shape[0]):
