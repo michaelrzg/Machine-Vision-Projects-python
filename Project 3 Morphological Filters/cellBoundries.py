@@ -1,7 +1,7 @@
 # Michael Rizig
 # Project 3: Morphological Filers
 # 001008703
-# File 2: Morph1
+# File 3: Cell Boundries
 # 7/6/2024
 
 #Import nessessary tools
