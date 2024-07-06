@@ -33,6 +33,7 @@ def dialation5(i,j):
     s=0
     s= padded[i-2][j-2]*struct1[0][0] + padded[i-2][j-1]*struct1[0][1] + padded[i-2][j]*struct1[0][2] + padded[i-2][j+1]*struct1[0][3] + padded[i-2][j+2]*struct1[0][4] + padded[i-1][j-2]*struct1[1][0] + padded[i-1][j-1]*struct1[1][1] + padded[i-1][j]*struct1[1][2] + padded[i-1][j+1]*struct1[1][3] + padded[i-1][j+2]*struct1[1][4] +  padded[i][j-2]*struct1[2][0] + padded[i][j-1]*struct1[2][1] + padded[i][j]*struct1[2][2] + padded[i][j+1]*struct1[2][3] + padded[i][j+2]*struct1[2][4] +  padded[i+1][j-2]*struct1[3][0] + padded[i+1][j-1]*struct1[3][1] + padded[i+1][j]*struct1[3][2] + padded[i+1][j+1]*struct1[3][3] + padded[i+1][j+2]*struct1[3][4] + padded[i+2][j-2]*struct1[4][0] + padded[i+2][j-1]*struct1[4][1] + padded[i+2][j]*struct1[4][2] + padded[i+2][j+1]*struct1[4][3] + padded[i+2][j+2]*struct1[4][4]   
     if s[0]>0:
+        # value chosed bc if the value is greater than 0, than at least 1 must have been hit
         return [255,255,255]
     return [0,0,0]
 
@@ -150,5 +151,5 @@ plottool.imshow(output)
 plottool.title("Eroded 5x5:")
 plottool.show()
 
-#save results for 5x5 erosion 
+#save results for 5x5 morphological erosion 
 cv2.imwrite('output/morph/finger/eroded5.jpg',output)

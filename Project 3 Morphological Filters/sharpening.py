@@ -49,7 +49,7 @@ moonimage = cv2.cvtColor(moonimage,cv2.COLOR_BGR2RGB)
 #created padded version (for edges of image)
 padded = cv2.copyMakeBorder(moonimage,1,1,1,1,cv2.BORDER_CONSTANT,value=[0,0,0])
 
-#define an output image to be same dimentions etc as input
+#define an output image to be same dimentions etc as input image
 output = moonimage.copy()
 #create a blank image for lapician filter results
 lapic = np.zeros([moonimage.shape[0], moonimage.shape[1], 3], dtype=np.uint8)
