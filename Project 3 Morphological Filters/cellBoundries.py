@@ -67,13 +67,13 @@ def connectedComponentAnalysis():
                 count+=1
                 last.append(ccomponentsArray[i][j])
     
-    #how many unique numbers = unique cells
+    #how many unique numbers = unique cells 
     print("Number of unique cells: ", count)
     
     #change label values for colors to look more unique in image
     for i in range(ccomponentsArray.shape[0]):
         for j in range(ccomponentsArray.shape[1]):
-            ccomponentsArray[i][j] = ccomponentsArray[i][j]%255
+            ccomponentsArray[i][j] = ccomponentsArray[i][j]
     
     #return our components array
     return ccomponentsArray, count        
@@ -158,7 +158,74 @@ out, count = connectedComponentAnalysis()
 
 #display output of connected component function
 plottool.imshow(out)
-plottool.savefig('output/morph/cells/CCA.png')
+#plottool.savefig('output/morph/cells/CCA.png')
 plottool.show()
 
 #create array to hold count values
+cellSizes = [0 for i in range(count)]
+values = []
+
+# find all unique values from image
+for i in range (out.shape[0]):
+    for j in range(out.shape[1]):
+        if out[i][j]!=0 and values.count(out[i][j])==0:
+            values.append(out[i][j])
+
+#count each unique value and store it in cellSizes array
+for i in range (out.shape[0]):
+    for j in range(out.shape[1]):
+        if out[i][j]!=0:
+            cellSizes[values.index(out[i][j])]+=1
+#display sizes of cells
+print(values)
+print(cellSizes)
+
+#find label for largest cell
+largestCell = values[cellSizes.index(max(cellSizes))]
+
+#create an image to store original bounds of largest cell
+largestOriginalBound = out.copy()
+
+#find largest bounds
+for i in range(largestOriginalBound.shape[0]):
+    for j in range(largestOriginalBound.shape[1]):
+        largestOriginalBound[i][j]=0
+        if out[i][j] == largestCell:
+            largestOriginalBound[i][j] = largestCell
+
+#show largst cell 
+plottool.imshow(largestOriginalBound)
+plottool.title("Largest Cell")
+plottool.savefig('output/morph/cells/largestCell.png')
+plottool.show()
+
+#now we erode the image using the same struct as before but now with respect to only the largst cell
+#output for erosion
+boundryOut = out.copy()
+
+#erosion process
+for i in range (out.shape[0]-1):
+    for j in range(out.shape[1]-1):
+        #same as erosion function from previous file(morphologicalProcessing.py)
+        s= out[i-1][j-1][0]*struct[0][0]+out[i-1][j][0]*struct[0][1]+out[i-1][j + 1][0]*struct[0][2]+out[i][j-1][0]*struct[1][0]+ out[i][j][0]*struct[1][1]+out[i][j + 1][0]*struct[1][2]+out[i + 1][j-1][0]*struct[2][0]+out[i + 1][j][0]*struct[2][1]+out[i + 1][j + 1][0]*struct[2][2]     
+        # if s = largestcell*5, then all 5 pixels in filter hit a largest cell value, so make target pixel largest cell value
+        if s==largestCell*5:
+            boundryOut[i][j]=largestCell
+        else:
+            #else set to 0
+            boundryOut[i][j]=0
+
+#display eroded largest cell
+plottool.imshow(boundryOut)
+plottool.title("erosion with respect to largest only")
+plottool.savefig('output/morph/cells/erodedlargest.png')
+plottool.show()
+
+#subtract eroded cell from original to get boundry
+largestOriginalBound-=boundryOut
+
+#finally, display boundry.
+plottool.imshow(largestOriginalBound)
+plottool.title("Largest minus eroded largest")
+plottool.savefig('output/morph/cells/LargestMinusErodedLargest.png')
+plottool.show()
