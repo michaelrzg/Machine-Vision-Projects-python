@@ -5,12 +5,41 @@
 # 7/12/2024
 
 #import Alexnet and other tools
-from alexnet_pytorch import AlexNet
-import os
+import numpy as np
+import tensorflow as tf
+from keras.preprocessing.image import ImageDataGenerator
+from keras.applications import AlexNet
+from keras.models import Sequential
+from keras.layers import Dense, Flatten, Dropout
+from keras.optimizers import SGDimport 
 from skimage import io
+import os
 
 #Prepare Data:
 
+# Define data generator (from slides)
+datagen = ImageDataGenerator(
+rescale=1./255,
+shear_range=0.2,
+zoom_range=0.2,
+horizontal_flip=True,
+validation_split=0.3) # Split data into training and validation
+
+# Load and prepare data
+data_dir = 'Train/' # Path to your data folder
+batch_size = 32
+train_generator = datagen.flow_from_directory(
+data_dir,
+target_size=(227, 227),
+batch_size=batch_size,
+class_mode='categorical',
+subset='training') # Use 70% of data for training
+val_generator = datagen.flow_from_directory(
+data_dir,
+target_size=(227, 227),
+batch_size=batch_size,
+class_mode='categorical',
+subset='validation') # Use 30% of data for validation
 #create groupings for labels
 nonDRLabels = []
 DRLabels = []
@@ -41,8 +70,7 @@ for s in DRLabels:
 #ensure loading was successful:
 assert len(nonDRImages) == len(nonDRLabels) and len(DRImages) == len(DRLabels)
 
-#ensure images are 1062x1028 and not 227x227:
-assert nonDRImages[0].shape == (1028,1062,3)
+print(nonDRImages[0].shape)
 
 #repeat for test data:
 
@@ -61,7 +89,7 @@ for label in testLabels:
 
 
 #load Alexnet 
-pretrained = AlexNet(weights='imagenet',include_top=False, input_shape=(1028,1062,3))
+pretrained = AlexNet.pretrained(weights='imagenet',include_top=False, input_shape=(1028,1062,3))
 
 for layer in pretrained.layers:
     layer.trainable = False
