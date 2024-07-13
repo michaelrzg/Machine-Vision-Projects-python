@@ -55,6 +55,8 @@ for s in labels:
     elif tag == '2.jpg' or tag == '3.jpg':
         DRLabels.append(s)
 
+print(len(nonDRLabels))
+print(len(DRLabels))
 #load images into memory:
 #create list for image objects:
 nonDRImages = []
