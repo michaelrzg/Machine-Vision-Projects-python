@@ -1,1 +1,1 @@
-[Image Resolution](/Documentation/Project 1 Image Resolution- Michael Rizig.pdf)
+[1. Image Resolution]([/Documentation/Project 1 Image Resolution- Michael Rizig.pdf](https://github.com/michaelrzg/Machine-Vision-Projects-python/blob/main/Documentation/Project%201%20Image%20Resolution-%20Michael%20Rizig.pdf))
